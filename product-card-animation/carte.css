@@ -10,10 +10,10 @@ body {
   min-height: 100vh;  
   background: #000000;  
 }  
-.container {  
+.contenitore {  
   position: relative;  
 }  
-.container .card {  
+.contenitore .carta {  
   position: relative;  
   width: 320px;  
   height: 450px;  
@@ -21,7 +21,7 @@ body {
   border-radius: 20px;  
   overflow: hidden;  
 }  
-.container .card:before {  
+.contenitore .carta:before {  
   content: "";  
   position: absolute;  
   top: 0;  
@@ -32,10 +32,10 @@ body {
   clip-path: circle(150px at 80% 20%);  
   transition: 0.5s ease-in-out;  
 }  
-.container .card:hover:before {  
+.contenitore .carta:hover:before {  
   clip-path: circle(300px at 80% -20%);  
 }  
-.container .card:after {  
+.contenitore .carta:after {  
   content: "Nike";  
   position: absolute;  
   top: 30%;  
@@ -45,7 +45,7 @@ body {
   font-style: italic;  
   color: rgba(255, 255, 255, 0.04);  
 }  
-.container .card .imgBx {  
+.contenitore .carta .imgBx {  
   position: absolute;  
   top: 50%;  
   transform: translateY(-50%);  
@@ -54,19 +54,19 @@ body {
   height: 100%;  
   transition: .5s;  
 }  
-.container .card:hover .imgBx {  
+.contenitore .carta:hover .imgBx {  
   top: 0%;  
   transform: translateY(-25%);  
   /* bug */  
 }  
-.container .card .imgBx img {  
+.contenitore .carta .imgBx img {  
   position: absolute;  
   top: 50%;  
   left: 50%;  
   transform: translate(-50%, -50%) rotate(20deg);  
   width: 270px;  
 }  
-.container .card .contentBx {  
+.contenitore .carta .contentBx {  
   position: absolute;  
   bottom: 0;  
   width: 100%;  
@@ -75,17 +75,17 @@ body {
   transition: 1s;  
   z-index: 90;  
 }  
-.container .card:hover .contentBx {  
+.contenitore .carta:hover .contentBx {  
   height: 210px;  
 }  
-.container .card .contentBx h2 {  
+.contenitore .carta .contentBx h2 {  
   position: relative;  
   font-weight: 600;  
   letter-spacing: 1px;  
   color: #fff;  
 }  
-.container .card .contentBx .size,  
-.container .card .contentBx .color {  
+.contenitore .carta .contentBx .size,  
+.contenitore .carta .contentBx .color {  
   display: flex;  
   justify-content: center;  
   align-items: center;  
@@ -94,18 +94,18 @@ body {
   opacity: 0;  
   visibility: hidden;  
 }  
-.container .card:hover .contentBx .size {  
+.contenitore .carta:hover .contentBx .size {  
   opacity: 1;  
   visibility: visible;  
   transition-delay: .5s;  
 }  
-.container .card:hover .contentBx .color {  
+.contenitore .carta:hover .contentBx .color {  
   opacity: 1;  
   visibility: visible;  
   transition-delay: .6s;  
 }  
-.container .card .contentBx .size h3,  
-.container .card .contentBx .color h3 {  
+.contenitore .carta .contentBx .size h3,  
+.contenitore .carta .contentBx .color h3 {  
   color: white;  
   font-weight: 300;  
   font-size: 14px;  
@@ -113,7 +113,7 @@ body {
   letter-spacing: 2px;  
   margin-right: 10px;  
 }  
-.container .card .contentBx .size span {  
+.contenitore .carta .contentBx .size span {  
   width: 26px;  
   height: 26px;  
   text-align: center;  
@@ -128,10 +128,10 @@ body {
   border-radius: 4px;  
   cursor: pointer;  
 }  
-.container .card .contentBx .size span:hover { /* other bug */  
+.contenitore .carta .contentBx .size span:hover { /* other bug */  
   background: #B90000;  
 }  
-.container .card .contentBx .color span {  
+.contenitore .carta .contentBx .color span {  
   width: 20px;  
   height: 20px;  
   background: #ff0;  
@@ -139,16 +139,16 @@ body {
   margin: 0 5px;  
   cursor: pointer;  
 }  
-.container .card .contentBx .color span:nth-child(2) {  
+.contenitore .carta .contentBx .color span:nth-child(2) {  
    background: #1BBFE9;  
 }  
-.container .card .contentBx .color span:nth-child(3) {  
+.contenitore .carta .contentBx .color span:nth-child(3) {  
    background: #1B2FE9;  
 }  
-.container .card .contentBx .color span:nth-child(4) {  
+.contenitore .carta .contentBx .color span:nth-child(4) {  
    background: #080481;  
 }  
-.container .card .contentBx a {  
+.contenitore .carta .contentBx a {  
   display: inline-block;  
   padding: 10px 20px;  
   background: #fff;  
@@ -161,7 +161,7 @@ body {
   transform: translateY(50px);  
   transition: .5s;  
 }  
-.container .card:hover .contentBx a {  
+.contenitore .carta:hover .contentBx a {  
   opacity: 1;  
   transform: translateY(0px);  
   transition-delay: .7s;  
