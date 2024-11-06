@@ -88,7 +88,7 @@ main{
 .featured_image{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     width: 47vw;
     transform: translate(-70%, -70%) rotate(-35deg);
 }

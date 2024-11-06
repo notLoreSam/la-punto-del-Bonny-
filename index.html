@@ -99,25 +99,26 @@
     </div>
     <div>
       <div class="prodotti">
-        <div class="prodotto">
+        <!--<div class="prodotto">
           <div class="contenitoreimg">
             <img src="./assets/01.avif" alt="Immagine originale" class="immagine-originale">
             <img src="./assets/05.jpg" alt="Nuova immagine" class="nuova-immagine">
-        </div>
+          </div>
           <div class="info">
             <h2>Blue Gaze and Enamel Green</h2>
             <p>Un'icona del design, l'Air Jordan 1 Travis Scott "Mocha" fonde dettagli classici con il tocco inconfondibile di La Flame. Caratterizzata dallo Swoosh invertito e dalla pelle premium marrone e bianca, questa sneaker è un must per i collezionisti e gli amanti dello streetwear.            </p>
           </div>
-        </div>
+        </div>-->
         <div class="prodotto">
             <img src="./assets/01.avif">
             <div class="info">
               <h2>Blue Gaze and Enamel Green</h2>
               <p>info</p>
+              <button class="bottone">acquista</button>
           </div>
         </div>
         <div class="prodotto">
-          <img src="./assets/01.avif">
+          <img src="./assets/01.avif" onmouseover="cambiaImmagine()" onmouseout="ripristinaImmagine()" id="image">
           <div class="info">
             <h2>Blue Gaze and Enamel Green</h2>
             <p>info</p>
@@ -354,9 +355,25 @@
     </div> 
   </body>
 </html>
-
+<!--
 <script>
   function cambiaImmagine() {
     document.querySelector('.elemento').classList.toggle('nuova-immagine');
 }
+</script>-->
+
+<script>
+  // Percorsi delle immagini
+  const immagineOriginale = "./assets/01.avif";
+  const immagineSostituzione = "./assets/verdyblue.jpg";
+
+  // Funzione per cambiare l'immagine
+  function cambiaImmagine() {
+      document.getElementById("image").src = immagineSostituzione;
+  }
+
+  // Funzione per ripristinare l'immagine originale
+  function ripristinaImmagine() {
+      document.getElementById("image").src = immagineOriginale;
+  }
 </script>
