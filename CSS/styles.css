@@ -204,3 +204,35 @@ body {
   background: rgba(0, 0, 0, .08);
   color: rgba(0, 0, 0, .3);
 }
+
+.contenitoreimg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  width: 100%;
+  height: auto;
+  border-radius: 30px; /* Arrotonda l'immagine in modo che non tocchi i bordi del contenitore */
+  display: block;
+}
+
+.immagine-originale,
+.nuova-immagine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease; /* Aggiunge una transizione morbida */
+}
+
+.nuova-immagine {
+  opacity: 0; /* Nasconde la nuova immagine */
+}
+
+.contenitoreimg:hover .immagine-originale {
+  opacity: 0; /* Nasconde l'immagine originale al passaggio del mouse */
+}
+
+.contenitoreimg:hover .nuova-immagine {
+  opacity: 1; /* Mostra la nuova immagine al passaggio del mouse */
+}

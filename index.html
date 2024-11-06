@@ -3,9 +3,9 @@
   <head>
     <title>SNKRS</title>
     <meta content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./navbar.css">
-    <link rel="stylesheet" href="./carte.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/navbar.css">
+    <link rel="stylesheet" href="./CSS/carte.css">
     <style>
       body{
         overflow-y: disable;
@@ -13,18 +13,42 @@
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">IlMioLogo</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">Chi siamo</a></li>
-        <li><a href="#services">Servizi</a></li>
-        <li><a href="#contact">Contatti</a></li>
-      </ul>
-    </nav>
+    <nav>
+      <div class="left_nav">
+          <div class="nav_logo">
+              <img src="./assets/nike.png" alt="">
+          </div>
+          <div class="nav_menu">
+              <ul>
+                  <li>
+                      <a href="#" class="link">HOME</a>
+                      <div class="link_border"></div>
+                  </li>
+                  <li>
+                      <a href="#" class="link">KIDS</a>
+                      <div class="link_border"></div>
+                  </li>
+                  <li>
+                      <a href="#" class="link">MEN</a>
+                      <div class="link_border"></div>
+                  </li>
+                  <li>
+                      <a href="#" class="link">WOMEN</a>
+                      <div class="link_border"></div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="right_nav">
+          <div class="nav_cart_box">
+              <i class="bx bx-cart"></i>
+          </div>
+      </div>
+  </nav>
     <div class="card-container">
       <div class="container">
         <div class="card">
+          
           <img class="background" src="./assets/01.avif">
 
           <div class="card-content">
@@ -76,11 +100,13 @@
     <div>
       <div class="prodotti">
         <div class="prodotto">
-          <img src="./assets/01.avif">
+          <div class="contenitoreimg">
+            <img src="./assets/01.avif" alt="Immagine originale" class="immagine-originale">
+            <img src="./assets/05.jpg" alt="Nuova immagine" class="nuova-immagine">
+        </div>
           <div class="info">
             <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
+            <p>Un'icona del design, l'Air Jordan 1 Travis Scott "Mocha" fonde dettagli classici con il tocco inconfondibile di La Flame. Caratterizzata dallo Swoosh invertito e dalla pelle premium marrone e bianca, questa sneaker è un must per i collezionisti e gli amanti dello streetwear.            </p>
           </div>
         </div>
         <div class="prodotto">
@@ -328,3 +354,9 @@
     </div> 
   </body>
 </html>
+
+<script>
+  function cambiaImmagine() {
+    document.querySelector('.elemento').classList.toggle('nuova-immagine');
+}
+</script>
