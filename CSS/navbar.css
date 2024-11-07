@@ -5,12 +5,13 @@ nav{
   align-items: center;
   padding: 0 6vw;
   height: 120px;
-  line-height: 120px;
   z-index: 100;
 }
 .left_nav{
   display: flex;
   gap: 50px;
+  display: flex;
+  align-items: center;
 }
 .nav_logo{
   display: flex;
@@ -45,3 +46,20 @@ ul li{
 .link:hover .link_border{
   width: 30px;
 }
+
+    /* Linea di sottolineatura animata */
+    .link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: #000;
+      transition: width 0.3s ease; /* Durata e tipo di transizione */
+    }
+
+    /* Effetto hover per la linea di sottolineatura */
+    .link:hover::after {
+      width: 100%; /* La linea si espande per tutta la larghezza del testo */
+    }
