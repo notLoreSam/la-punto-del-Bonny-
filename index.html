@@ -1,379 +1,79 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>SNKRS</title>
-    <meta content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/styles.css">
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike - Sito Ufficiale</title>
+    <link rel="stylesheet" href="./home.css">
     <link rel="stylesheet" href="./CSS/navbar.css">
-    <link rel="stylesheet" href="./CSS/carte.css">
-    <style>
-      body{
-        overflow-y: disable;
-      }
-    </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <nav>
-      <div class="left_nav">
-          <div class="nav_logo">
-              <img src="./assets/nike.png" alt="">
-          </div>
-          <div class="nav_menu">
-              <ul>
-                  <li>
-                      <a href="#" class="link">HOME</a>
-                      <div class="link_border"></div>
-                  </li>
-                  <li>
-                      <a href="#" class="link">KIDS</a>
-                      <div class="link_border"></div>
-                  </li>
-                  <li>
-                      <a href="#" class="link">MEN</a>
-                      <div class="link_border"></div>
-                  </li>
-                  <li>
-                      <a href="#" class="link">WOMEN</a>
-                      <div class="link_border"></div>
-                  </li>
-              </ul>
-          </div>
-      </div>
-      <div class="right_nav">
-          <div class="nav_cart_box">
-              <i class="bx bx-cart"></i>
-          </div>
-      </div>
-  </nav>
-    <div class="card-container">
-      <div class="container">
-        <div class="card">
-          
-          <img class="background" src="./assets/01.avif">
+        <div class="left_nav">
+            <div class="nav_logo">
+                <img src="./assets/nike.png" alt="">
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li>
+                        <a href="#" class="link">HOME</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="link">KIDS</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="link">MEN</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="link">WOMEN</a>
+                        <div class="link_border"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right_nav">
+            <div class="nav_cart_box">
+                <i class="bx bx-cart"></i>
+            </div>
+        </div>
+    </nav>
 
-          <div class="card-content">
-            <h3 class="title">Blue Gaze and Enamel Green</h3>
-          </div>
-          <div class="backdrop"></div>
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="./assets/Travis Scott Nike Attack Commercial.mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video.
+        </video>
+        <div class="hero-text">
+            <h1>Scopri la Nuova Collezione Nike</h1>
+            <p>Innovazione, comfort e stile per atleti e appassionati di moda sportiva.</p>
+            <a href="#" class="cta-button">Esplora Ora</a>
         </div>
+    </section>
 
-        <div class="card">
-          <img class="background" src="./assets/02.jpg">
+    <section class="products">
+        <h2>Prodotti in Evidenza</h2>
+        <div class="product-gallery">
+            <div class="product-card">
+                <img src="./assets/air1.webp" alt="Scarpa Nike Air">
+                <h3>Nike Air</h3>
+                <p>Il massimo del comfort.</p>
+            </div>
+            <div class="product-card">
+                <img src="./assets/react1.png" alt="Scarpa Nike React">
+                <h3>Nike React</h3>
+                <p>Stile e prestazioni.</p>
+            </div>
+            <div class="product-card">
+                <img src="./assets/blazer1.webp" alt="Scarpa Nike Blazer">
+                <h3>Nike Blazer</h3>
+                <p>Classico intramontabile.</p>
+            </div>
+        </div>
+    </section>
 
-          <div class="card-content">
-            <h3 class="title">jordan 1 high unc x off white</h3>
-          </div>
-          <div class="backdrop"></div>
-        </div>
-
-        <div class="card">
-          <img class="background" src="./assets/03.jpg">
-
-          <div class="card-content">
-            <h3 class="title">Purple Lobster</h3>
-          </div>
-          <div class="backdrop"></div>
-        </div>
-
-        <div class="card">
-          <img class="background" src="./assets/04.jpg">
-
-          <div class="card-content">
-            <h3 class="title">Travis Scott canary yellow</h3>
-          </div>
-          <div class="backdrop"></div>
-        </div>
-
-        <div class="card">
-          <img class="background" src="./assets/05.avif">
-
-          <div class="card-content">
-            <h3 class="title">Travis Scott Mocha High</h3>
-          </div>
-          <div class="backdrop"></div>
-        </div>
-      </div>
-    </div>
-    <div class="titolo">
-      <h1>Prodotti</h1>
-    </div>
-    <div>
-      <div class="prodotti">
-        <!--<div class="prodotto">
-          <div class="contenitoreimg">
-            <img src="./assets/01.avif" alt="Immagine originale" class="immagine-originale">
-            <img src="./assets/05.jpg" alt="Nuova immagine" class="nuova-immagine">
-          </div>
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>Un'icona del design, l'Air Jordan 1 Travis Scott "Mocha" fonde dettagli classici con il tocco inconfondibile di La Flame. Caratterizzata dallo Swoosh invertito e dalla pelle premium marrone e bianca, questa sneaker è un must per i collezionisti e gli amanti dello streetwear.            </p>
-          </div>
-        </div>-->
-        <div class="prodotto">
-            <img src="./assets/01.avif">
-            <div class="info">
-              <h2>Blue Gaze and Enamel Green</h2>
-              <p>info</p>
-              <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif" onmouseover="cambiaImmagine()" onmouseout="ripristinaImmagine()" id="image">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <h2>Blue Gaze and Enamel Green</h2>
-          <p>info</p>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone">acquista</button>
-          </div>
-        </div>
-        <div class="prodotto">
-          <img src="./assets/01.avif">
-          <div class="info">
-            <h2>Blue Gaze and Enamel Green</h2>
-            <p>info</p>
-            <button class="bottone"><p class="scritta">acquista</p></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="titolo">
-      <h1>Best seller</h1>
-    </div>
-    <div class="bho">
-      <div class="contenitore">  
-        <div class="carta">  
-          <div class="imgBx">  
-            <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">  
-          </div>  
-          <div class="contentBx">  
-            <h2>Nike Shoes</h2>  
-            <div class="size">  
-              <h3>Size :</h3>  
-              <span>7</span>  
-              <span>8</span>  
-              <span>9</span>  
-              <span>10</span>  
-            </div>  
-            <div class="color">  
-              <h3>Color :</h3>  
-              <span></span>  
-              <span></span>  
-              <span></span>  
-            </div>  
-            <a href="#">Buy Now</a>  
-          </div>  
-        </div>  
-      </div> 
-      <div class="contenitore">  
-        <div class="carta">  
-          <div class="imgBx">  
-            <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">  
-          </div>  
-          <div class="contentBx">  
-            <h2>Nike Shoes</h2>  
-            <div class="size">  
-              <h3>Size :</h3>  
-              <span>7</span>  
-              <span>8</span>  
-              <span>9</span>  
-              <span>10</span>  
-            </div>  
-            <div class="color">  
-              <h3>Color :</h3>  
-              <span></span>  
-              <span></span>  
-              <span></span>  
-            </div>  
-            <a href="#">Buy Now</a>  
-          </div>  
-        </div>  
-      </div> 
-      <div class="contenitore">  
-        <div class="carta">  
-          <div class="imgBx">  
-            <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">  
-          </div>  
-          <div class="contentBx">  
-            <h2>Nike Shoes</h2>  
-            <div class="size">  
-              <h3>Size :</h3>  
-              <span>7</span>  
-              <span>8</span>  
-              <span>9</span>  
-              <span>10</span>  
-            </div>  
-            <div class="color">  
-              <h3>Color :</h3>  
-              <span></span>  
-              <span></span>  
-              <span></span>  
-            </div>  
-            <a href="#">Buy Now</a>  
-          </div>  
-        </div>  
-      </div>  
-      <div class="contenitore">  
-        <div class="carta">  
-          <div class="imgBx">  
-            <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">  
-          </div>  
-          <div class="contentBx">  
-            <h2>Nike Shoes</h2>  
-            <div class="size">  
-              <h3>Size :</h3>  
-              <span>7</span>  
-              <span>8</span>  
-              <span>9</span>  
-              <span>10</span>  
-            </div>  
-            <div class="color">  
-              <h3>Color :</h3>  
-              <span></span>  
-              <span></span>  
-              <span></span>  
-            </div>  
-            <a href="#">Buy Now</a>  
-          </div>  
-        </div>  
-      </div>
-      <div class="contenitore">  
-        <div class="carta">  
-          <div class="imgBx">  
-            <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">  
-          </div>  
-          <div class="contentBx">  
-            <h2>Nike Shoes</h2>  
-            <div class="size">  
-              <h3>Size :</h3>  
-              <span>7</span>  
-              <span>8</span>  
-              <span>9</span>  
-              <span>10</span>  
-            </div>  
-            <div class="color">  
-              <h3>Color :</h3>  
-              <span></span>  
-              <span></span>  
-              <span></span>  
-            </div>  
-            <a href="#">Buy Now</a>  
-          </div>  
-        </div>  
-      </div> 
-    </div> 
-  </body>
+</body>
 </html>
-<!--
-<script>
-  function cambiaImmagine() {
-    document.querySelector('.elemento').classList.toggle('nuova-immagine');
-}
-</script>
-
-<script>
-  // Percorsi delle immagini
-  const immagineOriginale = "./assets/01.avif";
-  const immagineSostituzione = "./assets/verdyblue.jpg";
-
-  // Funzione per cambiare l'immagine
-  function cambiaImmagine() {
-      document.getElementById("image").src = immagineSostituzione;
-  }
-
-  // Funzione per ripristinare l'immagine originale
-  function ripristinaImmagine() {
-      document.getElementById("image").src = immagineOriginale;
-  }
-</script>-->
