@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .immagine {
+          width: 100%;
+          height: 100%;
+          /*background-image: url('C:\\Users\\gabri\\Desktop\\Scuola\\la-punto-del-Bonny-\\assets\\01.avif');*/
+          background-size: cover;
+          animation: cambiaImmagine 1s infinite alternate;
+        }
+      
+        @keyframes cambiaImmagine {
+        0%, 50% { background-image: url('C:\\Users\\gabri\\Desktop\\Scuola\\la-punto-del-Bonny-\\assets\\01.avif'); }  /* Prima immagine visibile per il 45% del tempo */
+        51%, 100% { background-image: url('C:\\Users\\gabri\\Desktop\\Scuola\\la-punto-del-Bonny-\\assets\\05.avif'); } /* Seconda immagine visibile per il 45% del tempo */
+        }
+        .ciao{
+            height: 300px;
+            width: 420px;
+        }
+      </style>
+</head>
+<body>
+    <div class="ciao">
+        <div class="immagine"></div>
+    </div>
+    
+</body>
+</html>
+
+
+  
+  
+  
