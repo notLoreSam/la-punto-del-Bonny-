@@ -10,7 +10,6 @@ nav{
 .left_nav{
   display: flex;
   gap: 50px;
-  display: flex;
   align-items: center;
 }
 .nav_logo{
@@ -59,7 +58,70 @@ ul li{
       transition: width 0.3s ease; /* Durata e tipo di transizione */
     }
 
-    /* Effetto hover per la linea di sottolineatura */
+    /* Effetto hover per la linea di sottolineatura*/
     .link:hover::after {
       width: 100%; /* La linea si espande per tutta la larghezza del testo */
     }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+  }
+  
+  .nav-link, .drop-down li {
+      list-style: none;
+      height: 100%;
+      padding: 0.2rem 1rem;
+      cursor: pointer;
+  }
+  
+  a {
+      text-decoration: none;
+      color: currentColor;
+  }
+  
+  .drop-down {
+      position: absolute;
+      padding: 0.2rem 0;
+      margin: 0.2rem -0.2rem;
+      background: antiquewhite;
+      color: black;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      font-size: 12px;
+      display: none;
+      visibility: hidden;
+  }
+
+  .services:hover .drop-down {
+      display: block;
+      visibility: visible;
+  }
+  
+  .services a {
+      display: flex;
+      align-items: center;
+  }
+  
+  .services .dropdown-icon {
+      font-size: 18px;
+      position: relative;
+      right: -5px;
+      transform: rotate(0deg);
+      transition: 0.3s ease-in-out all;
+  }
+  
+  .services:hover .dropdown-icon {
+      transform: rotate(180deg);
+  }
+  
+  .drop-down li:hover {
+      background: black;
+      color: #fff;
+      border-radius: 0.2rem;
+  }
+
+  .drop-down li{
+    margin: 15px;
+  }
+

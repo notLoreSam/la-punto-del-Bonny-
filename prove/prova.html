@@ -252,7 +252,7 @@ div {
   100% {background-color: green;}
 }
 
--->
+
 
 
 <!DOCTYPE html>
@@ -290,8 +290,144 @@ div {
 </head>
 <body>
 
-  <!-- Testo con sottolineatura animata al passaggio del mouse -->
+   Testo con sottolineatura animata al passaggio del mouse 
   <p class="testo-sottolineato">Passa il mouse su questo testo per vedere l'animazione della sottolineatura!</p>
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar con Dropdown</title>
+    <style>
+        /* Stile di base per la navbar */
+        .navbar {
+            display: flex;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        /* Contenitore del dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        /* Elenco nascosto per il dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #444;
+            min-width: 150px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        /* Elementi all'interno del dropdown */
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Mostra il dropdown al passaggio del mouse */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+     Navbar con dropdown 
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <a href="#services">Services</a>
+            <div class="dropdown-content">
+                <a href="#web-design">Web Design</a>
+                <a href="#seo">SEO</a>
+                <a href="#marketing">Marketing</a>
+            </div>
+        </div>
+        <a href="#contact">Contact</a>
+    </div>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dropdown{
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background: #C06162;
+      background: #34495e;
+      position: relative;
+      font-size: 18px;
+      perspective: 1000px;
+      z-index: 100;
+    }
+    hover .dropdown_menu li{
+      display: block;
+    }
+    .dropdown_menu{
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 100%;
+   perspective: 1000px;
+   z-index: -1;
+
+   li
+    display: none;
+    color: white;
+    background-color: #34495e
+    padding: 10px 20px
+    font-size: 16px
+    opacity: 0
+    &:hover
+      background-color: #2980b9 
+    }
+    
+  </style>
+</head>
+<body>
+  <li class="dropdown dropdown-7">
+    RotateX
+    <ul class="dropdown_menu dropdown_menu--animated dropdown_menu-7">
+      <li class="dropdown_item-1">Item 1</li>
+      <li class="dropdown_item-2">Item 2</li>
+      <li class="dropdown_item-3">Item 3</li>
+        <li class="dropdown_item-4">Item 4</li>
+        <li class="dropdown_item-5">Item 5</li>
+    </ul>
+  </li>
+</body>
+</html>-->
+
