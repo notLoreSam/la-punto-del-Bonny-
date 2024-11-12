@@ -46,7 +46,6 @@ ul li{
   width: 30px;
 }
 
-    /* Linea di sottolineatura animata */
     .link::after {
       content: "";
       position: absolute;
@@ -55,12 +54,12 @@ ul li{
       width: 0;
       height: 2px;
       background-color: #000;
-      transition: width 0.3s ease; /* Durata e tipo di transizione */
+      transition: width 0.3s ease; 
     }
 
-    /* Effetto hover per la linea di sottolineatura*/
+   
     .link:hover::after {
-      width: 100%; /* La linea si espande per tutta la larghezza del testo */
+      width: 100%; 
     }
 
     .nav-links {
