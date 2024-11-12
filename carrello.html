@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello</title>
+    <link rel="stylesheet" href="./CSS/carrello.css">
+    <link rel="stylesheet" href="./CSS/navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="left_nav">
+            <div class="nav_logo">
+                <img src="./assets/nike.jpg" alt="">
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li>
+                        <a href="index.html" class="link">HOME</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="scarpe.html" class="link">SCARPE</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li class="nav-link  services">
+                        <a href="#">PRODOTTI
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                            </span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a href="Pag3.html">Blue Gaze and Enamel Green</a></li>
+                            <li><a href="Pag2.html">Reverse Olive</a></li>
+                            <li><a href="Pag1.html">Dark Smoke Grey and Fire Red</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="scarpe.html#best_seller" class="link">BEST SELLER</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="login.html" class="link">
+                            ACCEDI/REGISTRATI
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right_nav">
+            <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt=""></a>
+            <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt=""></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Il tuo carrello</h1>
+
+        <!-- Lista degli articoli -->
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="./assets/canary.webp" alt="Immagine prodotto">
+                <div class="item-details">
+                    <h2>Air Jordan 1 Low OG x Travis Scott Canry Yellow</h2>
+                    <p>Colore: Yellow</p>
+                    <p>Taglia: 42</p>
+                </div>
+                <div class="item-price">159,99 €</div>
+            </div>
+
+            <div class="cart-item">
+                <img src="./assets/dunky.png" alt="Immagine prodotto">
+                <div class="item-details">
+                    <h2>Ben & Jerry Chunky Dunky</h2>
+                    <p>Colore: Bianco/Nero</p>
+                    <p>Taglia: 44</p>
+                </div>
+                <div class="item-price">1190,00 €</div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2>Riepilogo Ordine</h2>
+            <div class="summary-item">
+                <span>Subtotale</span>
+                <span>€1349.99</span>
+            </div>
+            <div class="summary-item">
+                <span>Spedizione</span>
+                <span>€5.00</span>
+            </div>
+            <div class="summary-item" style="font-weight: bold;">
+                <span>Totale</span>
+                <span>€1354.99</span>
+            </div>
+            <a href="#" class="checkout-btn">Procedi al Checkout</a>
+        </div>
+    </div>
+
+</body>
+</html>

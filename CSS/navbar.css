@@ -71,7 +71,6 @@ ul li{
   .nav-link, .drop-down li {
       list-style: none;
       height: 100%;
-      padding: 0.2rem 1rem;
       cursor: pointer;
   }
   
@@ -125,3 +124,7 @@ ul li{
     margin: 15px;
   }
 
+.right_nav img{
+  margin: 20px;
+  height: 40px
+}
