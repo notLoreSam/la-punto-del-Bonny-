@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina 1</title>
+</head>
+<body>
+    <h2>Scegli un'opzione:</h2>
+    <label><input type="radio" name="scelta" value="Opzione 1"> Opzione 1</label><br>
+    <label><input type="radio" name="scelta" value="Opzione 2"> Opzione 2</label><br>
+    <label><input type="radio" name="scelta" value="Opzione 3"> Opzione 3</label><br>
+
+    <button onclick="salvaDati()">Salva Dati</button>
+
+    <script>
+        function salvaDati() {
+            const radioSelezionato = document.querySelector('input[name="scelta"]:checked'); // Ottiene il radio button selezionato
+            
+            if (!radioSelezionato) {  // Controlla se l'utente ha selezionato un'opzione
+                alert('Seleziona un\'opzione prima di salvare.');
+                return;
+            }
+
+            const valoreRadio = radioSelezionato.value;  // Valore del radio button selezionato
+            const testoFisso = "Questo è il testo fisso predefinito.";  // Testo fisso
+            const imgpath = "Questo è il testo fisso predefinito.";  // Testo fisso
+
+            // Crea un oggetto con i dati da salvare
+            const dati = {
+                radioSelezionato: valoreRadio,
+                testoFisso: testoFisso, 
+                imgpath:imgpath
+            };
+
+            // Salva i dati nel localStorage
+            localStorage.setItem('datiSalvati', JSON.stringify(dati));
+
+            // Reindirizza alla Pagina 2
+            //window.location.href = 'pagina2.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina 2</title>
+</head>
+<body>
+    <h1>Dati Salvati</h1>
+    <div id="output"></div>
+
+    <script>
+        // Recupera i dati dal localStorage
+        const datiSalvati = JSON.parse(localStorage.getItem('datiSalvati'));
+
+        const outputDiv = document.getElementById('output');
+        if (datiSalvati) {
+            outputDiv.innerHTML = `
+                <p><strong>Opzione selezionata:</strong> ${datiSalvati.radioSelezionato}</p>
+                <p><strong>Testo fisso:</strong> ${datiSalvati.testoFisso}</p>
+                <p><strong>Testo fisso:</strong> ${datiSalvati.imgpath}</p>
+            `;
+        } else {
+            outputDiv.innerHTML = '<p>Nessun dato salvato.</p>';
+        }
+    </script>
+</body>
+</html>
