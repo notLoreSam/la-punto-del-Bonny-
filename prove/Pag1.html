@@ -5,39 +5,56 @@
     <title>Pagina 1</title>
 </head>
 <body>
-    <h2>Scegli un'opzione:</h2>
-    <label><input type="radio" name="scelta" value="Opzione 1"> Opzione 1</label><br>
-    <label><input type="radio" name="scelta" value="Opzione 2"> Opzione 2</label><br>
-    <label><input type="radio" name="scelta" value="Opzione 3"> Opzione 3</label><br>
 
-    <button onclick="salvaDati()">Salva Dati</button>
+    <h1>Inserisci i tuoi dati</h1>
+
+    <!-- Form statico in HTML -->
+    <p>Seleziona un'opzione:</p>
+    <select id="selezioneOpzione">
+        <option value="" disabled selected>-- Scegli un'opzione --</option>
+        <option value="Opzione 1">Opzione 1</option>
+        <option value="Opzione 2">Opzione 2</option>
+        <option value="Opzione 3">Opzione 3</option>
+    </select>
+
+    <!-- Bottoni -->
+    <br><br>
+    <button onclick="aggiungiMessaggio()">Aggiungi</button>
+    <button onclick="vaiAPagina2()">Vai a Pagina 2</button>
 
     <script>
-        function salvaDati() {
-            const radioSelezionato = document.querySelector('input[name="scelta"]:checked'); // Ottiene il radio button selezionato
-            
-            if (!radioSelezionato) {  // Controlla se l'utente ha selezionato un'opzione
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = '../assets/01.avif';
+        const nome = 'Mario Rossi';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+
+            if (!opzione) {
                 alert('Seleziona un\'opzione prima di salvare.');
                 return;
             }
 
-            const valoreRadio = radioSelezionato.value;  // Valore del radio button selezionato
-            const testoFisso = "Questo è il testo fisso predefinito.";  // Testo fisso
-            const imgpath = "Questo è il testo fisso predefinito.";  // Testo fisso
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
 
-            // Crea un oggetto con i dati da salvare
-            const dati = {
-                radioSelezionato: valoreRadio,
-                testoFisso: testoFisso, 
-                imgpath:imgpath
-            };
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome 
+            });
 
-            // Salva i dati nel localStorage
-            localStorage.setItem('datiSalvati', JSON.stringify(dati));
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
 
-            // Reindirizza alla Pagina 2
-            //window.location.href = 'pagina2.html';
+            alert('Dati aggiunti con successo!');
+        }
+
+        function vaiAPagina2() {
+            window.location.href = 'pag2.html';
         }
     </script>
+
 </body>
 </html>

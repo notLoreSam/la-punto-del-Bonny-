@@ -5,23 +5,67 @@
     <title>Pagina 2</title>
 </head>
 <body>
+
     <h1>Dati Salvati</h1>
     <div id="output"></div>
 
-    <script>
-        // Recupera i dati dal localStorage
-        const datiSalvati = JSON.parse(localStorage.getItem('datiSalvati'));
+    <button onclick="vaiAPagina1()">Torna a Pagina 1</button>
 
-        const outputDiv = document.getElementById('output');
-        if (datiSalvati) {
-            outputDiv.innerHTML = `
-                <p><strong>Opzione selezionata:</strong> ${datiSalvati.radioSelezionato}</p>
-                <p><strong>Testo fisso:</strong> ${datiSalvati.testoFisso}</p>
-                <p><strong>Testo fisso:</strong> ${datiSalvati.imgpath}</p>
-            `;
-        } else {
-            outputDiv.innerHTML = '<p>Nessun dato salvato.</p>';
+    <script>
+        function mostraMessaggi() {
+            const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+            const outputDiv = document.getElementById('output');
+            
+            if (messaggiSalvati.length === 0) {
+                outputDiv.innerHTML = '<p>Nessun dato salvato.</p>';
+                return;
+            }
+
+            // Crea la lista dei messaggi
+            outputDiv.innerHTML = messaggiSalvati.map((msg, index) => `
+                <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                    <p><strong>Opzione selezionata:</strong> 
+                        <select id="selezioneOpzione-${index}">
+                            <option value="Opzione 1" ${msg.opzione === 'Opzione 1' ? 'selected' : ''}>Opzione 1</option>
+                            <option value="Opzione 2" ${msg.opzione === 'Opzione 2' ? 'selected' : ''}>Opzione 2</option>
+                            <option value="Opzione 3" ${msg.opzione === 'Opzione 3' ? 'selected' : ''}>Opzione 3</option>
+                        </select>
+                    </p>
+
+                    <p><strong>Immagine:</strong></p>
+                    <img src="${msg.percorsoImmagine}" alt="Immagine" style="width: 100px; height: 100px;">
+                    
+                    <p><strong>Nome:</strong> ${msg.nome}</p>
+                    
+                    <button onclick="modificaDati(${index})">Modifica</button>
+                    <button onclick="eliminaDati(${index})">Elimina</button>
+                </div>
+            `).join('');
         }
+
+        function modificaDati(index) {
+            const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+            const nuovaOpzione = document.getElementById(`selezioneOpzione-${index}`).value;
+
+            messaggiSalvati[index].opzione = nuovaOpzione;
+
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+            alert('Dati modificati con successo!');
+        }
+
+        function eliminaDati(index) {
+            const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+            messaggiSalvati.splice(index, 1);
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+            mostraMessaggi();
+        }
+
+        function vaiAPagina1() {
+            window.location.href = 'pag1.html';
+        }
+
+        mostraMessaggi();
     </script>
+
 </body>
 </html>
