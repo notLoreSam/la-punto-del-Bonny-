@@ -63,22 +63,34 @@ main{
     line-height: 30px;
 }
 .cart{
-    display: flex;
+    margin-left: 40%;
+    /*display: flex;*/
     justify-content: space-between;
     align-items: center;
-    margin: 20px 80px 0 0;
+    /*margin: 20px 80px 0 0;*/
 }
-.cart_btn{
-    font-weight: 600;
-    width: 130px;
+.cart button{
+    
+    margin-top: 25px;
+    font-weight: 900;
+    width: 150px;
     height: 45px;
     border-radius: 30px;
     border: none;
-    box-shadow: -5px 5px 10px rgba(0,0,0, 0.2);
+    box-shadow: -5px 5px 10px rgba(0,0,0, 0.5);
     cursor: pointer;
 }
+.taglie{
+    margin-top: 15px;
+}
+.seleziona{
+    margin-top: 15px;
+    font-weight: 500;
+    font-family: sans-serif;
+}
 .price{
-    font-weight: 600;
+    margin-top: 10px;
+    font-weight: 900;
 }
 .right_col{
    width: 50%;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina 1</title>
+</head>
+<body>
+
+    <h1>Inserisci i tuoi dati</h1>
+
+    <!-- Form statico in HTML -->
+    <p>Seleziona un'opzione:</p>
+    <select id="selezioneOpzione">
+        <option value="" disabled selected>-- Scegli un'opzione --</option>
+        <option value="Opzione 1">Opzione 1</option>
+        <option value="Opzione 2">Opzione 2</option>
+        <option value="Opzione 3">Opzione 3</option>
+    </select>
+
+    <!-- Bottoni -->
+    <br><br>
+    <button onclick="aggiungiMessaggio()">Aggiungi</button>
+    <button onclick="vaiAPagina2()">Vai a Pagina 2</button>
+
+    <script>
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = '../assets/02.jpg';
+        const nome = 'Francesca Rossi';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+
+            if (!opzione) {
+                alert('Seleziona un\'opzione prima di salvare.');
+                return;
+            }
+
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome 
+            });
+
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+
+            alert('Dati aggiunti con successo!');
+        }
+
+        function vaiAPagina2() {
+            window.location.href = 'pag2.html';
+        }
+    </script>
+
+</body>
+</html>

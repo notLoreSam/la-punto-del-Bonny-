@@ -58,45 +58,79 @@
     <div class="container">
         <h1>Il tuo carrello</h1>
 
+        <div id="output"></div>
         <!-- Lista degli articoli -->
-        <div class="cart-items">
-            <div class="cart-item">
-                <img src="./assets/canary.webp" alt="Immagine prodotto">
-                <div class="item-details">
-                    <h2>Air Jordan 1 Low OG x Travis Scott Canry Yellow</h2>
-                    <p>Colore: Yellow</p>
-                    <p>Taglia: 42</p>
-                </div>
-                <div class="item-price">159,99 €</div>
-            </div>
-
-            <div class="cart-item">
-                <img src="./assets/dunky.png" alt="Immagine prodotto">
-                <div class="item-details">
-                    <h2>Ben & Jerry Chunky Dunky</h2>
-                    <p>Colore: Bianco/Nero</p>
-                    <p>Taglia: 44</p>
-                </div>
-                <div class="item-price">1190,00 €</div>
-            </div>
-        </div>
-
-        <div class="cart-summary">
-            <h2>Riepilogo Ordine</h2>
-            <div class="summary-item">
-                <span>Subtotale</span>
-                <span>€1349.99</span>
-            </div>
-            <div class="summary-item">
-                <span>Spedizione</span>
-                <span>€5.00</span>
-            </div>
-            <div class="summary-item" style="font-weight: bold;">
-                <span>Totale</span>
-                <span>€1354.99</span>
-            </div>
-            <a href="#" class="checkout-btn">Procedi al Checkout</a>
-        </div>
+        <script>
+            function mostraMessaggi() {
+                const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+                const outputDiv = document.getElementById('output');
+                
+                if (messaggiSalvati.length === 0) {
+                    outputDiv.innerHTML = '<p>Nessun elemento presente nel carrello</p>';
+                    return;
+                }
+    
+                // Crea la lista dei messaggi
+                outputDiv.innerHTML = messaggiSalvati.map((msg, index) => `
+                    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                        <p><strong>Opzione selezionata:</strong></p>
+                            <select id="selezioneOpzione-${index}">
+                                <option value="35" ${msg.opzione === '35' ? 'selected' : ''}>35</option>
+                                <option value="36" ${msg.opzione === '36' ? 'selected' : ''}>36</option>
+                                <option value="37" ${msg.opzione === '37' ? 'selected' : ''}>36</option>
+                                <option value="38" ${msg.opzione === '38' ? 'selected' : ''}>38</option>
+                                <option value="39" ${msg.opzione === '39' ? 'selected' : ''}>39</option>
+                                <option value="40" ${msg.opzione === '40' ? 'selected' : ''}>40</option>
+                                <option value="40.5" ${msg.opzione === '40.5' ? 'selected' : ''}>40.5</option>
+                                <option value="41" ${msg.opzione === '41' ? 'selected' : ''}>41</option>
+                                <option value="42" ${msg.opzione === '42' ? 'selected' : ''}>42</option>
+                                <option value="42.5" ${msg.opzione === '42.5' ? 'selected' : ''}>42.5</option>
+                                <option value="43" ${msg.opzione === '43' ? 'selected' : ''}>43</option>
+                                <option value="44" ${msg.opzione === '44' ? 'selected' : ''}>44</option>
+                                <option value="44.5" ${msg.opzione === '44.5' ? 'selected' : ''}>44.5</option>
+                                <option value="45" ${msg.opzione === '45' ? 'selected' : ''}>45</option>
+                                <option value="46" ${msg.opzione === '46' ? 'selected' : ''}>46</option>
+                                <option value="47" ${msg.opzione === '47' ? 'selected' : ''}>47</option>
+                                <option value="48" ${msg.opzione === '48' ? 'selected' : ''}>48</option>
+                                <option value="49" ${msg.opzione === '49' ? 'selected' : ''}>49</option>
+                                <option value="50" ${msg.opzione === '50' ? 'selected' : ''}>50</option>
+                            </select>
+                        
+    
+                        <p><strong>Immagine:</strong></p>
+                        <img src="${msg.percorsoImmagine}" alt="Immagine" style="width: 100px; height: 100px;">
+                        
+                        <p><strong>Nome:</strong> ${msg.nome}</p>
+                        
+                        <button onclick="modificaDati(${index})">Modifica</button>
+                        <button onclick="eliminaDati(${index})">Elimina</button>
+                    </div>
+                `).join('');
+            }
+    
+            function modificaDati(index) {
+                const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+                const nuovaOpzione = document.getElementById(`selezioneOpzione-${index}`).value;
+    
+                messaggiSalvati[index].opzione = nuovaOpzione;
+    
+                localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+                alert('Dati modificati con successo!');
+            }
+    
+            function eliminaDati(index) {
+                const messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+                messaggiSalvati.splice(index, 1);
+                localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+                mostraMessaggi();
+            }
+    
+            function vaiAPagina1() {
+                window.location.href = 'pag1.html';
+            }
+    
+            mostraMessaggi();
+        </script>
     </div>
 
 </body>
