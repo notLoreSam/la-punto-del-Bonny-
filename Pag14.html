@@ -78,8 +78,33 @@
                     <p>Nel 1989, Universal Pictures lancia un film di fantascienza con Michael J. Fox destinato a riscuotere grande successo. Nella pellicola, il protagonista riceve un paio di "Nike Mag" che si allacciano da sole. All'epoca, le scarpe non erano autoallaccianti ma per rendere questo effetto futuristico durante le riprese qualcuno doveva accovacciarsi sullo sfondo e tirare i lacci delle sneakers. Qualche decennio più tardi, l'inesauribile vena innovativa di Nike porta al lancio delle famose sneakers Nike Mag in edizione speciale.</p>
                 </div>
                 <div class="cart">
-                    <button class="cart_btn">Add to Cart</button>
                     <p class="price">82.300,00 €</p>
+                    <p class="seleziona">Seleziona la taglia:</p>
+                    <select id="selezioneOpzione" class="taglie">
+                        <option value="" disabled selected>Scegli un'opzione</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">36</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="40.5">40.5</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="42.5">42.5</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="44.5">44.5</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                    </select>
+                    <br>
+                    <button onclick="aggiungiMessaggio()">Aggiungi al carrello</button>
+                    
                 </div>
             </div>
             <!--RIGHT COLUMN-->
@@ -87,6 +112,35 @@
                 <img src="./assets/blazer1.webp" class="featured_image">
             </div>
         </main>
-    </div> 
+    </div>
+    <script>
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = './assets/blazer1.webp';
+        const nome = 'Back to the Future';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+
+            if (!opzione) {
+                alert('Seleziona un\'opzione prima di aggiungere al carrello.');
+                return;
+            }
+
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome 
+            });
+
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+
+            alert('Dati aggiunti con successo!');
+        }
+    </script> 
 </body>
 </html>

@@ -78,8 +78,39 @@
                     <p>Ci sono cose che possono far paura: l'altezza, i ragni, marcare MJ nel 1989. Tutte prospettive terrificanti. Per rendere omaggio alla tradizione e all'unicità della prima edizione della colorway, questa AJ4 è realizzata secondo le esatte specifiche del modello originale dell'89. Avresti tanto voluto indossarlo? Ora per lo meno potrai scoprire che cosa si provava.</p>
                 </div>
                 <div class="cart">
-                    <button class="cart_btn">Add to Cart</button>
                     <p class="price">304,00 €</p>
+                    <p class="seleziona">Seleziona la taglia:</p>
+                    <select id="selezioneOpzione" class="taglie">
+                        <option value="" disabled selected>Scegli un'opzione</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">36</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="40.5">40.5</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="42.5">42.5</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="44.5">44.5</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                    </select>
+                    <p class="seleziona">Seleziona la quantità:</p>
+                    <div class="quantity-selector">
+                        <button class="btn minus">-</button>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+                        <button class="btn plus">+</button>
+                    </div>
+                    <br>
+                    <button onclick="aggiungiMessaggio()">Aggiungi al carrello</button>
+                    
                 </div>
             </div>
             <!--RIGHT COLUMN-->
@@ -88,5 +119,34 @@
             </div>
         </main>
     </div>
+    <script>
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = './assets/j4.webp';
+        const nome = 'Pine Green';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+
+            if (!opzione) {
+                alert('Seleziona un\'opzione prima di aggiungere al carrello.');
+                return;
+            }
+
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome 
+            });
+
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+
+            alert('Dati aggiunti con successo!');
+        }
+    </script>
 </body>
 </html>

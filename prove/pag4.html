@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selezione quantità in stile Amazon</title>
+    <style>
+        /* Resetta i margini e i padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.quantity-selector button.btn {
+    background-color: #f0f0f0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quantity-selector button.btn:hover {
+    background-color: #ddd;
+}
+
+.quantity-selector button.btn:active {
+    background-color: #bbb;
+}
+
+.quantity-selector button.minus {
+    border-right: 1px solid #ccc;
+}
+
+.quantity-selector button.plus {
+    border-left: 1px solid #ccc;
+}
+
+.quantity-selector input[type="number"] {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    color: #333;
+}
+
+.quantity-selector input[type="number"]:focus {
+    outline: none;
+    border-color: #f90;
+    box-shadow: 0 0 3px #f90;
+}
+
+.quantity-selector input[type="number"]::-webkit-inner-spin-button,
+.quantity-selector input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="quantity-selector">
+    <button class="btn minus">-</button>
+    <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+    <button class="btn plus">+</button>
+</div>
+
+<script>
+    const minusButton = document.querySelector('.minus');
+const plusButton = document.querySelector('.plus');
+const quantityInput = document.getElementById('quantity');
+
+// Aumenta la quantità quando si preme il pulsante "+"
+plusButton.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (!isNaN(currentValue)) {
+        const newValue = currentValue + 1;
+        quantityInput.value = newValue > 99 ? 99 : newValue; // Imposta il limite massimo a 99
+    }
+});
+
+// Diminuisce la quantità quando si preme il pulsante "-"
+minusButton.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (!isNaN(currentValue)) {
+        const newValue = currentValue - 1;
+        quantityInput.value = newValue < 1 ? 1 : newValue; // Imposta il limite minimo a 1
+    }
+});
+
+// Impedisce di inserire valori fuori dal range
+quantityInput.addEventListener('input', () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (isNaN(currentValue) || currentValue < 1) {
+        quantityInput.value = 1;
+    } else if (currentValue > 99) {
+        quantityInput.value = 99;
+    }
+});
+
+</script>
+</body>
+</html>

@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="container">
-        <nav class="navbar">
+        <nav>
             <div class="left_nav">
                 <div class="nav_logo">
                     <img src="./assets/nike.jpg" alt="">
@@ -66,6 +66,7 @@
                 <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt=""></a>
             </div>
         </nav>
+        
         <!-- MAIN-->
         <main>
             <!--LEFT COLUMN-->
@@ -76,17 +77,7 @@
                 </div>
                 <div class="line"></div>
                 <div class="shoe_description">
-                    <p>Disponibile il giorno 02/11 alle ore 9:00
-                        Dopo il rivoluzionario debutto del 1999, 
-                        la futuristica Air Max SNDR torna in un'edizione più cool che mai. 
-                        Questa sneaker continua a rompere gli schemi con una nuova colorway d'impatto, 
-                        che abbina tonalità Dark Smoke Grey e Fire Red a 
-                        dettagli color argento e agli esclusivi inserti dal design rifrangente. 
-                        L'edizione include inoltre il GORE-TEX per offrire calore e pelle sempre asciutta, 
-                        mentre l'ammortizzazione Max Air dona comfort ed elasticità straordinari. 
-                        Sotto la zip del rivestimento appaiono i numeri "6453", 
-                        che richiamano le ultime quattro cifre dei numeri di telefono di alcuni uffici Nike nel mondo 
-                        e compongono la scritta N-I-K-E sul tastierino.</p>
+                    <p>Disponibile il giorno 02/11 alle ore 9:00...</p>
                 </div>
                 <div class="cart">
                     <p class="price">199,99 €</p>
@@ -113,9 +104,16 @@
                         <option value="49">49</option>
                         <option value="50">50</option>
                     </select>
+                    
+                    <p class="seleziona">Seleziona la quantità:</p>
+                    <div class="quantity-selector">
+                        <button class="btn minus">-</button>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+                        <button class="btn plus">+</button>
+                    </div>
+                    
                     <br>
                     <button onclick="aggiungiMessaggio()">Aggiungi al carrello</button>
-                    
                 </div>
             </div>
             <!--RIGHT COLUMN-->
@@ -129,9 +127,11 @@
         // Valori predefiniti dal programmatore (NON visibili)
         const percorsoImmagine = './assets/scarpa.jpg';
         const nome = 'Air Max SNDR GORE-TEX';
+        const prezzo = '199,99 €';
 
         function aggiungiMessaggio() {
             const opzione = document.getElementById('selezioneOpzione').value;
+            const quantita = document.getElementById('quantity').value;
 
             if (!opzione) {
                 alert('Seleziona un\'opzione prima di salvare.');
@@ -145,7 +145,9 @@
             messaggiSalvati.push({ 
                 opzione: opzione, 
                 percorsoImmagine: percorsoImmagine, 
-                nome: nome 
+                nome: nome,
+                prezzo: prezzo,
+                quantita: quantita
             });
 
             // Salva l'array aggiornato nel localStorage
@@ -153,6 +155,21 @@
 
             alert('Dati aggiunti con successo!');
         }
+
+        // Funzionalità pulsanti "+" e "-"
+        const minusButton = document.querySelector('.minus');
+        const plusButton = document.querySelector('.plus');
+        const quantityInput = document.getElementById('quantity');
+
+        plusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
+        });
+
+        minusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
+        });
     </script>
 </body>
 </html>

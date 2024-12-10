@@ -78,8 +78,39 @@
                     <p>Ti presentiamo l'ultima collab tra il brand Jordan e Travis Scott. Questa AJ1 in edizione speciale rende omaggio ai colori del liceo frequentato dall'icona dell'hip-hop a Missouri City, in Texas. Realizzata in pelle di prima qualità, vanta una colorazione in Canary e Light Silver, con un tocco di Racer Blue. I dettagli dei due brand e l'esclusivo logo Swoosh rovesciato donano a questo modello uno stile impareggiabile.</p>
                 </div>
                 <div class="cart">
-                    <button class="cart_btn">Add to Cart</button>
                     <p class="price">159,99 €</p>
+                    <p class="seleziona">Seleziona la taglia:</p>
+                    <select id="selezioneOpzione" class="taglie">
+                        <option value="" disabled selected>Scegli un'opzione</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">36</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="40.5">40.5</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="42.5">42.5</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="44.5">44.5</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                    </select>
+                    <p class="seleziona">Seleziona la quantità:</p>
+                    <div class="quantity-selector">
+                        <button class="btn minus">-</button>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+                        <button class="btn plus">+</button>
+                    </div>
+                    <br>
+                    <button onclick="aggiungiMessaggio()">Aggiungi al carrello</button>
+                    
                 </div>
             </div>
             <!--RIGHT COLUMN-->
@@ -88,5 +119,34 @@
             </div>
         </main>
     </div>
+    <script>
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = './assets/canary.webp';
+        const nome = 'Air Jordan 1 Low OG x Travis Scott Canary';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+
+            if (!opzione) {
+                alert('Seleziona un\'opzione prima di salvare.');
+                return;
+            }
+
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome 
+            });
+
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+
+            alert('Dati aggiunti con successo!');
+        }
+    </script>
 </body>
 </html>

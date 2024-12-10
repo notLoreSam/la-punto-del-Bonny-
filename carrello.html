@@ -73,7 +73,10 @@
                 // Crea la lista dei messaggi
                 outputDiv.innerHTML = messaggiSalvati.map((msg, index) => `
                     <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-                        <p><strong>Opzione selezionata:</strong></p>
+
+                        <p><strong>${msg.nome}</strong></p>
+                        
+                        <p><strong>Taglia selezionata:</strong></p>
                             <select id="selezioneOpzione-${index}">
                                 <option value="35" ${msg.opzione === '35' ? 'selected' : ''}>35</option>
                                 <option value="36" ${msg.opzione === '36' ? 'selected' : ''}>36</option>
@@ -95,12 +98,12 @@
                                 <option value="49" ${msg.opzione === '49' ? 'selected' : ''}>49</option>
                                 <option value="50" ${msg.opzione === '50' ? 'selected' : ''}>50</option>
                             </select>
-                        
-    
-                        <p><strong>Immagine:</strong></p>
+                        <br>
+
                         <img src="${msg.percorsoImmagine}" alt="Immagine" style="width: 100px; height: 100px;">
                         
-                        <p><strong>Nome:</strong> ${msg.nome}</p>
+                        <p><strong>Quantità:</strong> ${msg.quantita}</p>
+                        <p><strong>Prezzo:</strong> ${msg.prezzo}</p>
                         
                         <button onclick="modificaDati(${index})">Modifica</button>
                         <button onclick="eliminaDati(${index})">Elimina</button>
