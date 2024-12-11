@@ -134,78 +134,52 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Recupera i dati dal localStorage
-            const cartItems = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
-            
-            // Funzione per calcolare il totale degli articoli e il prezzo totale
-            const calculateCartSummary = () => {
-                let totalItems = 0;
-                let totalPrice = 0;
-    
-                cartItems.forEach(item => {
-                    totalItems += item.quantita;  // Aggiungi la quantità degli articoli
-                    totalPrice += item.prezzo * item.quantita;  // Aggiungi il prezzo totale
-                });
-    
-                return { totalItems, totalPrice };
-            };
-    
-            // Funzione per aggiornare la vista
-            const updateCartSummary = () => {
-                const { totalItems, totalPrice } = calculateCartSummary();
-                
-                // Aggiorna il numero di articoli e il totale dell'ordine nella pagina
-                document.getElementById('cart-counter').textContent = totalItems;
-                document.getElementById('order-items').textContent = totalItems;
-                document.getElementById('order-total').textContent = totalPrice.toFixed(2) + ' €';
-                document.querySelector('.summary p:nth-child(1)').textContent = `Articoli: ${totalItems}`;
-                document.querySelector('.summary p:nth-child(2)').textContent = `Totale: ${totalPrice.toFixed(2)} €`;
-            };
-    
-            // Chiamata per aggiornare la vista subito dopo il caricamento della pagina
-            updateCartSummary();
-    
-            // Gestisci l'aggiornamento dei dati durante il checkout
-            const addressButton = document.getElementById('btn-address');
-            const paymentButton = document.getElementById('btn-payment');
-            const reviewButton = document.getElementById('btn-review');
-            const addressSection = document.getElementById('section-address');
-            const paymentSection = document.getElementById('section-payment');
-            const reviewSection = document.getElementById('section-review');
-    
-            addressButton.addEventListener('click', () => {
-                const address = document.getElementById('address').value;
-                if (address.trim() !== '') {
-                    addressSection.classList.add('completed');
-                    paymentSection.classList.remove('completed');
-                } else {
-                    alert('Inserisci un indirizzo valido.');
-                }
+        // Valori predefiniti dal programmatore (NON visibili)
+        const percorsoImmagine = './assets/scarpa.jpg';
+        const nome = 'Air Max SNDR GORE-TEX';
+        const prezzo = '199,99 €';
+
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+            const quantita = document.getElementById('quantity').value;
+
+            if (!opzione) {
+                alert('Seleziona un\'opzione prima di salvare.');
+                return;
+            }
+
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({ 
+                opzione: opzione, 
+                percorsoImmagine: percorsoImmagine, 
+                nome: nome,
+                prezzo: prezzo,
+                quantita: quantita
             });
-    
-            document.getElementById('payment-method').addEventListener('change', (e) => {
-                if (e.target.value !== '') {
-                    paymentButton.classList.remove('disabled');
-                } else {
-                    paymentButton.classList.add('disabled');
-                }
-            });
-    
-            paymentButton.addEventListener('click', () => {
-                if (!paymentButton.classList.contains('disabled')) {
-                    paymentSection.classList.add('completed');
-                    reviewSection.classList.remove('completed');
-                }
-            });
-    
-            reviewButton.addEventListener('click', () => {
-                if (!reviewButton.classList.contains('disabled')) {
-                    alert('Ordine completato con successo!');
-                }
-            });
+
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+
+            alert('Dati aggiunti con successo!');
+        }
+
+        // Funzionalità pulsanti "+" e "-"
+        const minusButton = document.querySelector('.minus');
+        const plusButton = document.querySelector('.plus');
+        const quantityInput = document.getElementById('quantity');
+
+        plusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
+        });
+
+        minusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
         });
     </script>
-    
 </body>
 </html>

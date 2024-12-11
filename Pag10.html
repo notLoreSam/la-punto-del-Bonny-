@@ -129,30 +129,49 @@
         // Valori predefiniti dal programmatore (NON visibili)
         const percorsoImmagine = './assets/dunky.png';
         const nome = 'Ben & Jerry Chunky Dunky';
+        const prezzo = '1190,00 €';
 
-        function aggiungiMessaggio() {
-            const opzione = document.getElementById('selezioneOpzione').value;
+function aggiungiMessaggio() {
+    const opzione = document.getElementById('selezioneOpzione').value;
+    const quantita = document.getElementById('quantity').value;
 
-            if (!opzione) {
-                alert('Seleziona un\'opzione prima di aggiungere al carrello.');
-                return;
-            }
+    if (!opzione) {
+        alert('Seleziona un\'opzione prima di salvare.');
+        return;
+    }
 
-            // Ottieni l'array di messaggi dal localStorage
-            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+    // Ottieni l'array di messaggi dal localStorage
+    let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
 
-            // Aggiungi il nuovo messaggio all'array
-            messaggiSalvati.push({ 
-                opzione: opzione, 
-                percorsoImmagine: percorsoImmagine, 
-                nome: nome 
-            });
+    // Aggiungi il nuovo messaggio all'array
+    messaggiSalvati.push({ 
+        opzione: opzione, 
+        percorsoImmagine: percorsoImmagine, 
+        nome: nome,
+        prezzo: prezzo,
+        quantita: quantita
+    });
 
-            // Salva l'array aggiornato nel localStorage
-            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+    // Salva l'array aggiornato nel localStorage
+    localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
 
-            alert('Dati aggiunti con successo!');
-        }
+    alert('Dati aggiunti con successo!');
+}
+
+// Funzionalità pulsanti "+" e "-"
+const minusButton = document.querySelector('.minus');
+const plusButton = document.querySelector('.plus');
+const quantityInput = document.getElementById('quantity');
+
+plusButton.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value);
+    quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
+});
+
+minusButton.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value);
+    quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
+});
     </script>
 </body>
 </html>

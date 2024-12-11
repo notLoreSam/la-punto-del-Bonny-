@@ -123,12 +123,14 @@
         // Valori predefiniti dal programmatore (NON visibili)
         const percorsoImmagine = './assets/orange-lobser.webp';
         const nome = 'Orange Lobster';
+        const prezzo = '82.300,00 €';
 
         function aggiungiMessaggio() {
             const opzione = document.getElementById('selezioneOpzione').value;
+            const quantita = document.getElementById('quantity').value;
 
             if (!opzione) {
-                alert('Seleziona un\'opzione prima di aggiungere al carrello.');
+                alert('Seleziona un\'opzione prima di salvare.');
                 return;
             }
 
@@ -139,7 +141,9 @@
             messaggiSalvati.push({ 
                 opzione: opzione, 
                 percorsoImmagine: percorsoImmagine, 
-                nome: nome 
+                nome: nome,
+                prezzo: prezzo,
+                quantita: quantita
             });
 
             // Salva l'array aggiornato nel localStorage
@@ -147,6 +151,21 @@
 
             alert('Dati aggiunti con successo!');
         }
+
+        // Funzionalità pulsanti "+" e "-"
+        const minusButton = document.querySelector('.minus');
+        const plusButton = document.querySelector('.plus');
+        const quantityInput = document.getElementById('quantity');
+
+        plusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
+        });
+
+        minusButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
+        });
     </script>
 </body>
 </html>

@@ -163,14 +163,16 @@
             
             // Funzione per calcolare il totale degli articoli e il prezzo totale
             const calculateCartSummary = () => {
-                let totalItems = 0;
-                let totalPrice = 0;
+                let totalItems = 0; // Numero totale di prodotti
+                let totalPrice = 0; // Prezzo totale
     
                 // Controlla se il carrello contiene dati validi
                 if (cartItems.length > 0) {
                     cartItems.forEach(item => {
-                        totalItems += item.quantita;  // Aggiungi la quantità degli articoli
-                        totalPrice += item.prezzo * item.quantita;  // Aggiungi il prezzo totale
+                        const quantita = parseInt(item.quantita, 10); // Converte in numero
+                        const prezzo = parseFloat(item.prezzo); // Converte in numero con decimali
+                        totalItems += quantita; // Somma le quantità (evita la concatenazione)
+                        totalPrice += prezzo * quantita; // Calcola il prezzo totale
                     });
                 }
     
@@ -190,55 +192,16 @@
                     document.querySelector('.summary p:nth-child(2)').textContent = `Totale: 0,00 €`;
                 } else {
                     // Aggiorna il numero di articoli e il totale dell'ordine nella pagina
-                    document.getElementById('cart-counter').textContent = totalItems;
-                    document.getElementById('order-items').textContent = totalItems;
-                    document.getElementById('order-total').textContent = totalPrice.toFixed(2) + ' €';
-                    document.querySelector('.summary p:nth-child(1)').textContent = `Articoli: ${totalItems}`;
-                    document.querySelector('.summary p:nth-child(2)').textContent = `Totale: ${totalPrice.toFixed(2)} €`;
+                    document.getElementById('cart-counter').textContent = totalItems; // Mostra il numero
+                    document.getElementById('order-items').textContent = totalItems; // Mostra il numero
+                    document.getElementById('order-total').textContent = totalPrice.toFixed(2) + ' €'; // Formatta il prezzo
+                    document.querySelector('.summary p:nth-child(1)').textContent = `Articoli: ${totalItems}`; // Mostra il numero
+                    document.querySelector('.summary p:nth-child(2)').textContent = `Totale: ${totalPrice.toFixed(2)} €`; // Formatta il prezzo
                 }
             };
     
             // Chiamata per aggiornare la vista subito dopo il caricamento della pagina
             updateCartSummary();
-    
-            // Gestisci l'aggiornamento dei dati durante il checkout
-            const addressButton = document.getElementById('btn-address');
-            const paymentButton = document.getElementById('btn-payment');
-            const reviewButton = document.getElementById('btn-review');
-            const addressSection = document.getElementById('section-address');
-            const paymentSection = document.getElementById('section-payment');
-            const reviewSection = document.getElementById('section-review');
-    
-            addressButton.addEventListener('click', () => {
-                const address = document.getElementById('address').value;
-                if (address.trim() !== '') {
-                    addressSection.classList.add('completed');
-                    paymentSection.classList.remove('completed');
-                } else {
-                    alert('Inserisci un indirizzo valido.');
-                }
-            });
-    
-            document.getElementById('payment-method').addEventListener('change', (e) => {
-                if (e.target.value !== '') {
-                    paymentButton.classList.remove('disabled');
-                } else {
-                    paymentButton.classList.add('disabled');
-                }
-            });
-    
-            paymentButton.addEventListener('click', () => {
-                if (!paymentButton.classList.contains('disabled')) {
-                    paymentSection.classList.add('completed');
-                    reviewSection.classList.remove('completed');
-                }
-            });
-    
-            reviewButton.addEventListener('click', () => {
-                if (!reviewButton.classList.contains('disabled')) {
-                    alert('Ordine completato con successo!');
-                }
-            });
         });
     </script>
     
