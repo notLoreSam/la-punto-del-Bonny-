@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello</title>
+    <link rel="stylesheet" href="./CSS/carrello.css">
+    <link rel="stylesheet" href="./CSS/navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .checkout-section {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .checkout-section.completed {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .section-header h2 {
+            margin: 0;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .summary {
+            float: right;
+            width: 30%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left_nav">
+            <div class="nav_logo">
+                <img src="./assets/nike.jpg" alt="">
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li>
+                        <a href="index.html" class="link">HOME</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="scarpe.html" class="link">SCARPE</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li class="nav-link  services">
+                        <a href="#">PRODOTTI
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                            </span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a href="Pag3.html">Blue Gaze and Enamel Green</a></li>
+                            <li><a href="Pag2.html">Reverse Olive</a></li>
+                            <li><a href="Pag1.html">Dark Smoke Grey and Fire Red</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="scarpe.html#best_seller" class="link">BEST SELLER</a>
+                        <div class="link_border"></div>
+                    </li>
+                    <li>
+                        <a href="login.html" class="link">ACCEDI/REGISTRATI</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right_nav">
+            <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt=""></a>
+            <a href="carrello.html" class="cart-icon-container">
+                <img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt="">
+                <span id="cart-counter" class="cart-counter">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Checkout sicuro</h1>
+
+        <div class="checkout-section" id="section-address">
+            <div class="section-header">
+                <h2>Indirizzo di consegna</h2>
+            </div>
+            <p>Inserisci il tuo indirizzo di consegna:</p>
+            <input type="text" id="address" placeholder="Via, città, CAP" required>
+            <button class="button" id="btn-address">Conferma indirizzo</button>
+        </div>
+
+        <div class="checkout-section completed" id="section-payment">
+            <div class="section-header">
+                <h2>Modalità di pagamento</h2>
+            </div>
+            <p>Seleziona un metodo di pagamento:</p>
+            <select id="payment-method">
+                <option value="">-- Seleziona --</option>
+                <option value="card">Carta di credito/debito</option>
+                <option value="gift">Buono regalo</option>
+                <option value="bank">Addebito su conto corrente</option>
+            </select>
+            <button class="button disabled" id="btn-payment">Conferma pagamento</button>
+        </div>
+
+        <div class="checkout-section completed" id="section-review">
+            <div class="section-header">
+                <h2>Riepilogo ordine</h2>
+            </div>
+            <p>Controlla il tuo ordine:</p>
+            <p>Articoli: <span id="order-items">0</span></p>
+            <p>Totale ordine: <span id="order-total">0,00 €</span></p>
+            <button class="button disabled" id="btn-review">Completa ordine</button>
+        </div>
+
+        <div class="summary">
+            <h3>Riepilogo</h3>
+            <p>Articoli: <span id="summary-items">0</span></p>
+            <p>Totale: <span id="summary-total">0,00 €</span></p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera i dati dal localStorage
+            const cartItems = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+            
+            // Funzione per calcolare il totale degli articoli e il prezzo totale
+            const calculateCartSummary = () => {
+                let totalItems = 0;
+                let totalPrice = 0;
+    
+                // Controlla se il carrello contiene dati validi
+                if (cartItems.length > 0) {
+                    cartItems.forEach(item => {
+                        totalItems += item.quantita;  // Aggiungi la quantità degli articoli
+                        totalPrice += item.prezzo * item.quantita;  // Aggiungi il prezzo totale
+                    });
+                }
+    
+                return { totalItems, totalPrice };
+            };
+    
+            // Funzione per aggiornare la vista
+            const updateCartSummary = () => {
+                const { totalItems, totalPrice } = calculateCartSummary();
+                
+                // Verifica se il totale è maggiore di 0, altrimenti mostra "Carrello vuoto"
+                if (totalItems === 0) {
+                    document.getElementById('cart-counter').textContent = "0";
+                    document.getElementById('order-items').textContent = "0";
+                    document.getElementById('order-total').textContent = "0,00 €";
+                    document.querySelector('.summary p:nth-child(1)').textContent = `Articoli: 0`;
+                    document.querySelector('.summary p:nth-child(2)').textContent = `Totale: 0,00 €`;
+                } else {
+                    // Aggiorna il numero di articoli e il totale dell'ordine nella pagina
+                    document.getElementById('cart-counter').textContent = totalItems;
+                    document.getElementById('order-items').textContent = totalItems;
+                    document.getElementById('order-total').textContent = totalPrice.toFixed(2) + ' €';
+                    document.querySelector('.summary p:nth-child(1)').textContent = `Articoli: ${totalItems}`;
+                    document.querySelector('.summary p:nth-child(2)').textContent = `Totale: ${totalPrice.toFixed(2)} €`;
+                }
+            };
+    
+            // Chiamata per aggiornare la vista subito dopo il caricamento della pagina
+            updateCartSummary();
+    
+            // Gestisci l'aggiornamento dei dati durante il checkout
+            const addressButton = document.getElementById('btn-address');
+            const paymentButton = document.getElementById('btn-payment');
+            const reviewButton = document.getElementById('btn-review');
+            const addressSection = document.getElementById('section-address');
+            const paymentSection = document.getElementById('section-payment');
+            const reviewSection = document.getElementById('section-review');
+    
+            addressButton.addEventListener('click', () => {
+                const address = document.getElementById('address').value;
+                if (address.trim() !== '') {
+                    addressSection.classList.add('completed');
+                    paymentSection.classList.remove('completed');
+                } else {
+                    alert('Inserisci un indirizzo valido.');
+                }
+            });
+    
+            document.getElementById('payment-method').addEventListener('change', (e) => {
+                if (e.target.value !== '') {
+                    paymentButton.classList.remove('disabled');
+                } else {
+                    paymentButton.classList.add('disabled');
+                }
+            });
+    
+            paymentButton.addEventListener('click', () => {
+                if (!paymentButton.classList.contains('disabled')) {
+                    paymentSection.classList.add('completed');
+                    reviewSection.classList.remove('completed');
+                }
+            });
+    
+            reviewButton.addEventListener('click', () => {
+                if (!reviewButton.classList.contains('disabled')) {
+                    alert('Ordine completato con successo!');
+                }
+            });
+        });
+    </script>
+    
+
+</body>
+</html>

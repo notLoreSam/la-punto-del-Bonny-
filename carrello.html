@@ -59,6 +59,7 @@
         <h1>Il tuo carrello</h1>
 
         <div id="output"></div>
+        <a href="carrello2.html"><p>acquista</p></a>
         <!-- Lista degli articoli -->
         <script>
             function mostraMessaggi() {
@@ -126,10 +127,6 @@
                 messaggiSalvati.splice(index, 1);
                 localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
                 mostraMessaggi();
-            }
-    
-            function vaiAPagina1() {
-                window.location.href = 'pag1.html';
             }
     
             mostraMessaggi();
