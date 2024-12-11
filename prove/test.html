@@ -1,113 +1,62 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Semplice</title>
+  <title>Color Dot Image Viewer</title>
   <style>
-    /* Reset di base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #333;
-  color: white;
-}
-
-.navbar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links li {
-  position: relative;
-}
-
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #0A66C2; /* Cambia colore al passaggio del mouse */
-}
-
-/* Barra inferiore di sottolineatura al passaggio del mouse */
-.nav-links a::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #0A66C2;
-  transition: width 0.3s;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-}
-
-.nav-links a:hover::after {
-  width: 100%; /* Mostra una sottolineatura sotto il link */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 0;
-    gap: 10px;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a {
-    padding: 10px 0;
-    width: 100%;
-    text-align: left;
-  }
-}
-
+    .color-dot {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .color-dot[data-color="red"] { background-color: red; }
+    .color-dot[data-color="green"] { background-color: green; }
+    .color-dot[data-color="blue"] { background-color: blue; }
+    
+    #image-container img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">IlMioLogo</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">Chi siamo</a></li>
-      <li><a href="#services">Secsdcsdfcsdfrvizi</a></li>
-      <li><a href="#contact">Contatti</a></li>
-    </ul>
-  </nav>
+  <h1>Click on a color to display an image</h1>
+  
+  <div id="color-buttons">
+    <button class="color-dot" data-color="red"></button>
+    <button class="color-dot" data-color="green"></button>
+    <button class="color-dot" data-color="blue"></button>
+  </div>
+  
+  <div id="image-container"></div>
+
+  <script>
+    const images = {
+      red: 'path/to/red-image.jpg', // Replace with the actual path to your image
+      green: 'path/to/green-image.jpg', // Replace with the actual path to your image
+      blue: 'path/to/blue-image.jpg' // Replace with the actual path to your image
+    };
+
+    const colorDots = document.querySelectorAll('.color-dot');
+    const imageContainer = document.getElementById('image-container');
+
+    colorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const color = dot.getAttribute('data-color');
+        const imageUrl = images[color];
+        if (imageUrl) {
+          imageContainer.innerHTML = `<img src="${imageUrl}" alt="${color} image">`;
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

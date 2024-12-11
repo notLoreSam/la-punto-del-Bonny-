@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="./css/scarpa.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .color-dot[data-color="red"] { background-color: red; }
+        .color-dot[data-color="colored"] { background: linear-gradient(45deg, #dcdda2, #e0a2ab); }
+        .color-dot[data-color="blue"] { background-color: blue; }
+        .color-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
     <div class="body_items">
@@ -43,7 +58,7 @@
                                 </span>
                             </a>
                             <ul class="drop-down">
-                                <li><a href="Pag3.html">Blue Gaze and Enamel Green</a></li>
+                                <li><a href="Pag3.html">Blue Gaze and Enamel green</a></li>
                                 <li><a href="Pag2.html">Reverse Olive</a></li>
                                 <li><a href="Pag1.html">Dark Smoke Grey and Fire Red</a></li>
                             </ul>
@@ -77,6 +92,11 @@
                 <div class="shoe_description">
                     <p>Le Nike Air Force 1 sono un'icona senza tempo, sinonimo di stile urbano e versatilità. Con un design classico e una silhouette pulita, queste scarpe combinano comfort e prestazioni, grazie alla robusta suola in gomma e alla tecnologia Nike Air per un'ammortizzazione ideale. Perfette per ogni occasione, le Air Force 1 sono il complemento perfetto per qualsiasi outfit, dall'abbigliamento sportivo allo streetwear casual.</p>
                 </div>
+                <div id="color-buttons">
+                    <button class="color-dot" data-color="red"></button>
+                    <button class="color-dot" data-color="colored"></button>
+                    <button class="color-dot" data-color="blue"></button>
+                  </div>
                 <div class="cart">
                     <p class="price">120,00 €</p>
                     <p class="seleziona">Seleziona la taglia:</p>
@@ -115,7 +135,7 @@
             </div>
             <!--RIGHT COLUMN-->
             <div class="right_col">
-                <img src="./assets/air1.webp" class="featured_image">
+                <img src="./assets/air1.webp" class="featured_image" id="main-image">
             </div>
         </main>
     </div> 
@@ -165,6 +185,26 @@
         minusButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
+        });
+
+        const images = {
+            red: './assets/FD1031-600.png', // Replace with the actual path to your image
+            colored: './assets/air-force-1-shadow-pastel-795179.webp', // Replace with the actual path to your image
+            blue: './assets/Nike-Air-Force-1-Louis-Vuitton-Blue-2-Photoroom.webp' // Replace with the actual path to your image
+        };
+
+        const colorDots = document.querySelectorAll('.color-dot');
+        const imageElement = document.getElementById('main-image');
+
+        colorDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const color = dot.getAttribute('data-color');
+            const imageUrl = images[color];
+            if (imageUrl) {
+            imageElement.src = imageUrl;
+            imageElement.alt = `${color} image`;
+            }
+        });
         });
     </script>
 </body>
