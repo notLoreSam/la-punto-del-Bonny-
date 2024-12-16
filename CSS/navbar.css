@@ -30,9 +30,8 @@ ul li{
 .link{
   text-decoration: none;
   padding: 10px 0;
-  color: black;
-  font-size: 15px;
-  font-weight: 500;
+  /*font-size: 15px;
+  font-weight: 500;*/
 }
 .nav_menu .link_border{
   height: 1px;
@@ -129,4 +128,31 @@ ul li{
   .right_nav img{
     margin: 20px;
     height: 40px
+  }
+
+  /*dark mode */
+  body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  .dark-mode .right_nav img {
+    filter: invert(1);
+  }
+  .toggle-dark-mode {
+    position: absolute;
+    top: 39px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .dark-mode .toggle-dark-mode {
+    background-color: #fff;
+    color: #000;
   }

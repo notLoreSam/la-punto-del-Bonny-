@@ -52,6 +52,7 @@
         <div class="right_nav">
             <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt=""></a>
             <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt=""></a>
+            <button id="toggleDarkMode" class="toggle-dark-mode">🌙</button>
         </div>
     </nav>
 
@@ -102,9 +103,9 @@
                         <br>
 
                         <img src="${msg.percorsoImmagine}" alt="Immagine" style="width: 100px; height: 100px;">
-                        
+            
                         <p><strong>Quantità:</strong> ${msg.quantita}</p>
-                        <p><strong>Prezzo:</strong> ${msg.prezzo}</p>
+                        <p><strong>Prezzo per unità:</strong> ${msg.prezzo}</p>
                         
                         <button onclick="modificaDati(${index})">Modifica</button>
                         <button onclick="eliminaDati(${index})">Elimina</button>
@@ -130,6 +131,20 @@
             }
     
             mostraMessaggi();
+
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkModeActive = document.body.classList.contains('dark-mode');
+                document.getElementById('toggleDarkMode').textContent = isDarkModeActive ? '☀️' : '🌙';
+                localStorage.setItem('darkMode', isDarkModeActive);
+            }
+
+            document.getElementById('toggleDarkMode').addEventListener('click', toggleDarkMode);
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('toggleDarkMode').textContent = '☀️';
+  }
         </script>
     </div>
 

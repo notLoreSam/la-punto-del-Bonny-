@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./CSS/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    </style>
 </head>
 <body>
 
@@ -19,41 +21,25 @@
             </div>
             <div class="nav_menu">
                 <ul>
-                    <li>
-                        <a href="index.html" class="link">HOME</a>
-                        <div class="link_border"></div>
-                    </li>
-                    <li>
-                        <a href="scarpe.html" class="link">SCARPE</a>
-                        <div class="link_border"></div>
-                    </li>
-                    <li class="nav-link  services">
-                        <a href="#">PRODOTTI
-                            <span class="material-icons dropdown-icon">
-                                arrow_drop_down
-                            </span>
-                        </a>
+                    <li><a href="index.html" class="link">HOME</a></li>
+                    <li><a href="scarpe.html" class="link">SCARPE</a></li>
+                    <li class="nav-link services">
+                        <a href="#">PRODOTTI<span class="material-icons dropdown-icon">arrow_drop_down</span></a>
                         <ul class="drop-down">
                             <li><a href="Pag3.html">Blue Gaze and Enamel Green</a></li>
                             <li><a href="Pag2.html">Reverse Olive</a></li>
                             <li><a href="Pag1.html">Dark Smoke Grey and Fire Red</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="scarpe.html#best_seller" class="link">BEST SELLER</a>
-                        <div class="link_border"></div>
-                    </li>
-                    <li>
-                        <a href="login.html" class="link">
-                            ACCEDI/REGISTRATI
-                        </a>
-                    </li>
+                    <li><a href="scarpe.html#best_seller" class="link">BEST SELLER</a></li>
+                    <li><a href="login.html" class="link">ACCEDI/REGISTRATI</a></li>
                 </ul>
             </div>
         </div>
         <div class="right_nav">
             <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt=""></a>
             <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt=""></a>
+            <button id="toggleDarkMode" class="toggle-dark-mode">🌙</button>
         </div>
     </nav>
 
@@ -72,30 +58,12 @@
     <section class="products">
         <h2>Prodotti in Evidenza</h2>
         <div class="product-gallery">
-            <a href="./Pag14.html">
-                <div class="product-card">
-                    <img src="./assets/air1.webp" alt="Scarpa Nike Air">
-                    <h3>Nike Air</h3>
-                    <p>Il massimo del comfort.</p>
-                </div>
-            </a>
-            <a href="./Pag13.html">
-                <div class="product-card">
-                    <img src="./assets/react1.png" alt="Scarpa Nike React">
-                    <h3>Nike React</h3>
-                    <p>Stile e prestazioni.</p>
-                </div>
-            </a>
-            <a href="./Pag14.html">
-                <div class="product-card">
-                    <img src="./assets/blazer1.webp" alt="Scarpa Nike Blazer">
-                    <h3>Nike Blazer</h3>
-                    <p>Classico intramontabile.</p>
-                </div>
-            </a>
-            
+            <a href="./Pag14.html"><div class="product-card"><img src="./assets/air1.webp" alt="Scarpa Nike Air"><h3>Nike Air</h3><p>Il massimo del comfort.</p></div></a>
+            <a href="./Pag13.html"><div class="product-card"><img src="./assets/react1.png" alt="Scarpa Nike React"><h3>Nike React</h3><p>Stile e prestazioni.</p></div></a>
+            <a href="./Pag14.html"><div class="product-card"><img src="./assets/blazer1.webp" alt="Scarpa Nike Blazer"><h3>Nike Blazer</h3><p>Classico intramontabile.</p></div></a>
         </div>
     </section>
+
     <section class="footer">
         <div class="footer-row">
           <div class="footer-col">
@@ -149,5 +117,22 @@
           </div>
         </div>
       </section>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkModeActive = document.body.classList.contains('dark-mode');
+            document.getElementById('toggleDarkMode').textContent = isDarkModeActive ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', isDarkModeActive);
+        }
+
+        document.getElementById('toggleDarkMode').addEventListener('click', toggleDarkMode);
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('toggleDarkMode').textContent = '☀️';
+        }
+    </script>
+
 </body>
 </html>
