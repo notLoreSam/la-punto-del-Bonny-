@@ -138,7 +138,7 @@ function aggiungiMessaggio() {
     const quantita = document.getElementById('quantity').value;
 
     if (!opzione) {
-        alert('Seleziona un\'opzione prima di salvare.');
+        alert('Seleziona una taglia prima di salvare.');
         return;
     }
 
@@ -157,7 +157,7 @@ function aggiungiMessaggio() {
     // Salva l'array aggiornato nel localStorage
     localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
 
-    alert('Dati aggiunti con successo!');
+    alert('Dati aggiunti al carrello');
 }
 
 // Funzionalità pulsanti "+" e "-"
