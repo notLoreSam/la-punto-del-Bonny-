@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="./css/navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        /*pulsante color dot con differenti colorazioni associate*/
         .color-dot[data-color="red"] { background-color: red; }
         .color-dot[data-color="colored"] { background: linear-gradient(45deg, #dcdda2, #e0a2ab); }
         .color-dot[data-color="blue"] { background-color: blue; }
+        /*caratteristiche dei pulsanti color dot*/
         .color-dot {
             width: 50px;
             height: 50px;
@@ -188,20 +190,20 @@
         });
 
         const images = {
-            red: './assets/FD1031-600.png', // Replace with the actual path to your image
-            colored: './assets/air-force-1-shadow-pastel-795179.webp', // Replace with the actual path to your image
-            blue: './assets/Nike-Air-Force-1-Louis-Vuitton-Blue-2-Photoroom.webp' // Replace with the actual path to your image
+            red: './assets/FD1031-600.png', 
+            colored: './assets/air-force-1-shadow-pastel-795179.webp', 
+            blue: './assets/Nike-Air-Force-1-Louis-Vuitton-Blue-2-Photoroom.webp' 
         };
-
+        /*viene selezionato ogni pulsante con classe color dot tramite metodo querySelectorAll*/
         const colorDots = document.querySelectorAll('.color-dot');
         const imageElement = document.getElementById('main-image');
 
         colorDots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const color = dot.getAttribute('data-color');
-            const imageUrl = images[color];
+        dot.addEventListener('click', () => { /*fase in cui si associa event listener per evento click*/
+            const color = dot.getAttribute('data-color'); /*recupero valore colore con data color*/
+            const imageUrl = images[color];/*ricerca del percorso immagine associata*/
             if (imageUrl) {
-            imageElement.src = imageUrl;
+            imageElement.src = imageUrl;/*aggiornamento src per cambiare l'immagine*/
             imageElement.alt = `${color} image`;
             }
         });
