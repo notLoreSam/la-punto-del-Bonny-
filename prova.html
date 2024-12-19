@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike - Sito Ufficiale</title>
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="./CSS/navbar.css">
+    <link rel="stylesheet" href="./CSS/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+
+
+        .search-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .search-results {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-results a {
+            display: block;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .search-results a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left_nav">
+            <div class="nav_logo">
+                <img src="./assets/nike.jpg" alt="Logo Nike">
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li><a href="index.html" class="link">HOME</a></li>
+                    <li><a href="scarpe.html" class="link">SCARPE</a></li>
+                    <li class="nav-link services">
+                        <a href="#">PRODOTTI<span class="material-icons dropdown-icon">arrow_drop_down</span></a>
+                        <ul class="drop-down">
+                            <li><a href="Pag3.html">Blue Gaze and Enamel Green</a></li>
+                            <li><a href="Pag2.html">Reverse Olive</a></li>
+                            <li><a href="Pag1.html">Dark Smoke Grey and Fire Red</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="scarpe.html#best_seller" class="link">BEST SELLER</a></li>
+                    <li><a href="login.html" class="link">ACCEDI/REGISTRATI</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Cerca prodotti...">
+        </div>
+
+        <div class="right_nav">
+            <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt="Login"></a>
+            <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt="Carrello"></a>
+            <button id="toggleDarkMode" class="toggle-dark-mode">🌙</button>
+        </div>
+    </nav>
+
+    <section class="search-results" id="searchResults"></section>
+
+    <script>
+        const products = [
+            { name: 'Nike Air', url: 'Pag14.html' },
+            { name: 'Nike React', url: 'Pag13.html' },
+            { name: 'Nike Blazer', url: 'Pag14.html' },
+            { name: 'Nike Pegasus', url: 'Pag15.html' },
+            { name: 'Nike ZoomX', url: 'Pag16.html' }
+        ];
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            if (query) {
+                const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+                if (filteredProducts.length > 0) {
+                    filteredProducts.forEach(product => {
+                        const resultLink = document.createElement('a');
+                        resultLink.textContent = product.name;
+                        resultLink.href = product.url;
+                        resultsContainer.appendChild(resultLink);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<p>Nessun prodotto trovato</p>';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

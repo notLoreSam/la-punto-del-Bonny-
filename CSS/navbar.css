@@ -17,6 +17,7 @@ nav{
   align-items: center;
 }
 .nav_logo img{
+  border-radius: 50%;
   width: 100px;
 }
 .nav_menu ul{
