@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="./CSS/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-    </style>
 </head>
 <body>
 
     <nav>
         <div class="left_nav">
             <div class="nav_logo">
-                <img src="./assets/nike.jpg" alt="">
+                <img src="./assets/nike.jpg" alt="Logo Nike">
             </div>
             <div class="nav_menu">
                 <ul>
@@ -36,17 +34,24 @@
                 </ul>
             </div>
         </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Cerca prodotti...">
+        </div>
+
         <div class="right_nav">
-            <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt=""></a>
-            <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt=""></a>
+            <a href="login.html"><img src="https://img.icons8.com/?size=100&id=26211&format=png&color=000000" alt="Login"></a>
+            <a href="carrello.html"><img src="https://img.icons8.com/?size=100&id=85080&format=png&color=000000" alt="Carrello"></a>
             <button id="toggleDarkMode" class="toggle-dark-mode">🌙</button>
         </div>
     </nav>
 
+    <section class="search-results" id="searchResults"></section>
+
+
     <section class="hero">
         <video autoplay muted loop class="hero-video">
             <source src="./assets/Travis Scott Nike Attack Commercial.mp4" type="video/mp4">
-            Il tuo browser non supporta il tag video.
         </video>
         <div class="hero-text">
             <h1>Scopri la Nuova Collezione Nike</h1>
@@ -118,21 +123,7 @@
         </div>
       </section>
 
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const isDarkModeActive = document.body.classList.contains('dark-mode');
-            document.getElementById('toggleDarkMode').textContent = isDarkModeActive ? '☀️' : '🌙';
-            localStorage.setItem('darkMode', isDarkModeActive);
-        }
-
-        document.getElementById('toggleDarkMode').addEventListener('click', toggleDarkMode);
-
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            document.getElementById('toggleDarkMode').textContent = '☀️';
-        }
-    </script>
+    <script src="./script.js"></script>
 
 </body>
 </html>
