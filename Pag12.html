@@ -98,6 +98,7 @@
                     <button class="color-dot" data-color="red"></button>
                     <button class="color-dot" data-color="colored"></button>
                     <button class="color-dot" data-color="blue"></button>
+                    <button class="color-dot" data-color="white"></button>
                   </div>
                 <div class="cart">
                     <p class="price">120,00 €</p>
@@ -142,72 +143,78 @@
         </main>
     </div> 
     <script>
-        // Valori predefiniti dal programmatore (NON visibili)
-        const percorsoImmagine = './assets/air1.webp';
+        let percorsoImmagine = './assets/air1.webp';
         const nome = 'AIR FORCE 1';
         const prezzo = '120,00 €';
-
-        function aggiungiMessaggio() {
-            const opzione = document.getElementById('selezioneOpzione').value;
-            const quantita = document.getElementById('quantity').value;
-
-            if (!opzione) {
-                alert('Seleziona una taglia prima di salvare.');
-                return;
-            }
-
-            // Ottieni l'array di messaggi dal localStorage
-            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
-
-            // Aggiungi il nuovo messaggio all'array
-            messaggiSalvati.push({ 
-                opzione: opzione, 
-                percorsoImmagine: percorsoImmagine, 
-                nome: nome,
-                prezzo: prezzo,
-                quantita: quantita
-            });
-
-            // Salva l'array aggiornato nel localStorage
-            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
-
-            alert('Dati aggiunti al carrello');
-        }
-
+    
         // Funzionalità pulsanti "+" e "-"
         const minusButton = document.querySelector('.minus');
         const plusButton = document.querySelector('.plus');
         const quantityInput = document.getElementById('quantity');
-
+    
         plusButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
         });
-
+    
         minusButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
         });
+    
 
+
+        // Gestione cambiamento immagine in base al colore
         const images = {
-            red: './assets/FD1031-600.png', 
-            colored: './assets/air-force-1-shadow-pastel-795179.webp', 
-            blue: './assets/Nike-Air-Force-1-Louis-Vuitton-Blue-2-Photoroom.webp' 
+            red: './assets/FD1031-600.png',
+            colored: './assets/air-force-1-shadow-pastel-795179.webp',
+            blue: './assets/Nike-Air-Force-1-Louis-Vuitton-Blue-2-Photoroom.webp',
+            white: './assets/air1.webp'
         };
-        /*viene selezionato ogni pulsante con classe color dot tramite metodo querySelectorAll*/
+    
         const colorDots = document.querySelectorAll('.color-dot');
         const imageElement = document.getElementById('main-image');
-
+    
         colorDots.forEach(dot => {
-        dot.addEventListener('click', () => { /*fase in cui si associa event listener per evento click*/
-            const color = dot.getAttribute('data-color'); /*recupero valore colore con data color*/
-            const imageUrl = images[color];/*ricerca del percorso immagine associata*/
-            if (imageUrl) {
-            imageElement.src = imageUrl;/*aggiornamento src per cambiare l'immagine*/
-            imageElement.alt = `${color} image`;
+            dot.addEventListener('click', () => {/*fase in cui si associa event listener per evento click*/
+                const color = dot.getAttribute('data-color');/*recupero valore colore con data color*/
+                const imageUrl = images[color];/*ricerca del percorso immagine associata*/
+                if (imageUrl) {
+                    imageElement.src = imageUrl;/*aggiornamento src per cambiare l'immagine*/
+                    imageElement.alt = `${color} image`;
+                    percorsoImmagine = imageUrl; // Aggiorna il percorso dell'immagine selezionata
+                }
+            });
+        });
+    
+        // Aggiungi al carrello
+        function aggiungiMessaggio() {
+            const opzione = document.getElementById('selezioneOpzione').value;
+            const quantita = document.getElementById('quantity').value;
+    
+            if (!opzione) {
+                alert('Seleziona una taglia prima di salvare.');
+                return;
             }
-        });
-        });
+    
+            // Ottieni l'array di messaggi dal localStorage
+            let messaggiSalvati = JSON.parse(localStorage.getItem('messaggiSalvati')) || [];
+    
+            // Aggiungi il nuovo messaggio all'array
+            messaggiSalvati.push({
+                opzione: opzione,
+                percorsoImmagine: percorsoImmagine,
+                nome: nome,
+                prezzo: prezzo,
+                quantita: quantita
+            });
+    
+            // Salva l'array aggiornato nel localStorage
+            localStorage.setItem('messaggiSalvati', JSON.stringify(messaggiSalvati));
+    
+            alert('Dati aggiunti al carrello');
+        }
     </script>
+    
 </body>
 </html>
