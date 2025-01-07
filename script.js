@@ -37,7 +37,7 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    const isDarkModeActive = document.body.classList.contains('dark-mode');
+    const isDarkModeActive = document.body.classList.contains('dark-mode');//controllo stato modalita darkmode
     document.getElementById('toggleDarkMode').textContent = isDarkModeActive ? '☀️' : '🌙';
     localStorage.setItem('darkMode', isDarkModeActive);
 }
