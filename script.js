@@ -16,12 +16,12 @@ const products = [
 ];
 
 document.getElementById('searchInput').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
+    const ricerca = e.target.value.toLowerCase();
     const resultsContainer = document.getElementById('searchResults');
     resultsContainer.innerHTML = '';
 
-    if (query) {
-        const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+    if (ricerca) {
+        const filteredProducts = products.filter(product => product.name.toLowerCase().includes(ricerca));
         if (filteredProducts.length > 0) {
             filteredProducts.forEach(product => {
                 const resultLink = document.createElement('a');
